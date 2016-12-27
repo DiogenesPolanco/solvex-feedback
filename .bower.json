@@ -22,7 +22,7 @@
     "_resolution": {
         "type": "version",
         "tag": "v1.0.0",
-        "commit": "b73f4248bf80393fee978a49516789a5142fe264"
+        "commit": "d1562e8bf8e61094d26564d2c60740a7d6068d3c"
     },
     "_source": "git://github.com/jacobscarter/angular-feedback.git",
     "_target": "~1.0.0",
