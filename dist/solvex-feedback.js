@@ -67,7 +67,8 @@ angular.module('solvex-feedback').directive('solvexFeedback', [function() {
                             highlighter: '<div id="feedback-highlighter"><img src="/bower_components/solvex-feedback/src/logo.jpg" style="width: 150px;display: inline-block;float: left; min-width: 90px;padding: 0 8px;margin-right: 16px;font-size: 11px;font-weight: bold;line-height: 28px;color: #444; text-align: center;white-space: nowrap;" />  <p>Click and drag on the page to help us better understand your feedback. You can move this dialog if it\'s in the way.</p><button id="feedback-highlighter-next" class="feedback-next-btn feedback-btn-gray">Next</button><button id="feedback-highlighter-back" class="feedback-back-btn feedback-btn-gray">Back</button><div style="margin-top: 100px;"><button class="feedback-sethighlight feedback-active"><div class="ico"></div><span>Highlight</span></button><label>Highlight areas relevant to your feedback.</label><button class="feedback-setblackout"><div class="ico"></div><span>Black out</span></button><label class="lower">Black out any personal information.</label></div><div class="feedback-buttons"></div><div class="feedback-wizard-close"></div></div>',
                             overview: '<div id="feedback-overview"><img src="http://solvex.com.do/media/1191/logo-solvex-1-1.png" style="width:30%;"><br/><div id="feedback-overview-description" style="width: 100%;"><div id="feedback-overview-description-text"><h3>Comments</h3></div></div><div id="feedback-overview-screenshot" class="col-md-12"><h3>Screenshot</h3></div><div class="feedback-buttons"><button id="feedback-submit" class="feedback-submit-btn feedback-btn-blue">Submit</button><button id="feedback-overview-back" class="feedback-back-btn feedback-btn-gray">Back</button></div><div id="feedback-overview-error">Please enter a description.</div><div class="feedback-wizard-close"></div></div>',
                             submitSuccess: '<div id="feedback-submit-success"><img src="http://solvex.com.do/media/1191/logo-solvex-1-1.png" style="width:30%;"><br/><p>Thank you for your feedback. We value every piece of feedback we receive.</p><p>We cannot respond individually to every one, but we will use your comments as we strive to improve your experience.</p><button class="feedback-close-btn feedback-btn-blue">OK</button><div class="feedback-wizard-close"></div></div>',
-                            submitError: '<div id="feedback-submit-error"><img src="http://solvex.com.do/media/1191/logo-solvex-1-1.png" style="width:30%;"><br/><p>Sadly an error occured while sending your feedback. Please try again.</p><button class="feedback-close-btn feedback-btn-blue">OK</button><div class="feedback-wizard-close"></div></div>'
+                            submitError: '<div id="feedback-submit-error"><img src="http://solvex.com.do/media/1191/logo-solvex-1-1.png" style="width:30%;"><br/><p>Sadly an error occured while sending your feedback. Please try again.</p><button class="feedback-close-btn feedback-btn-blue">OK</button><div class="feedback-wizard-close"></div></div>',
+                            submitErrorGraph: '<div id="feedback-submit-error"><img src="http://solvex.com.do/media/1191/logo-solvex-1-1.png" style="width:30%;"><br/><p>Sadly an error occured while sending your feedback. Please <a href="https://graph.microsoft.io/en-us/docs/get-started/angular#authenticate-the-user-and-get-an-access-token">configure your API</a> and try again.</p><button class="feedback-close-btn feedback-btn-blue">OK</button><div class="feedback-wizard-close"></div></div>'
                         },
                         onClose: function() {},
                         screenshotStroke: true,
@@ -563,35 +564,38 @@ angular.module('solvex-feedback').directive('solvexFeedback', [function() {
                                         .api('/me')
                                         .get((err, me) => {
                                             if (err) throw err;
+                                            if (me === undefined) {
+                                                $('#feedback-module').append(settings.tpl.submitErrorGraph);
+                                            } else {
+                                                // Build the HTTP request payload (the Message object).
+                                                var email = {
+                                                    Subject: settings.feedbackSubject + " " + me.displayName,
+                                                    Body: {
+                                                        ContentType: 'HTML',
+                                                        Content: htmlContent
+                                                    },
+                                                    "Attachments": [{
+                                                        "@odata.type": "#Microsoft.OutlookServices.FileAttachment",
+                                                        "Name": "screenshot.png",
+                                                        "ContentBytes": post.img.replace("data:image/png;base64,", "")
+                                                    }],
+                                                    ToRecipients: [{
+                                                        EmailAddress: {
+                                                            Address: settings.feedbackMail !== undefined ? settings.feedbackMail : settings.feedbackContact
+                                                        }
+                                                    }]
+                                                };
 
-                                            // Build the HTTP request payload (the Message object).
-                                            var email = {
-                                                Subject: settings.feedbackSubject + " " + me.displayName,
-                                                Body: {
-                                                    ContentType: 'HTML',
-                                                    Content: htmlContent
-                                                },
-                                                "Attachments": [{
-                                                    "@odata.type": "#Microsoft.OutlookServices.FileAttachment",
-                                                    "Name": "screenshot.png",
-                                                    "ContentBytes": post.img.replace("data:image/png;base64,", "")
-                                                }],
-                                                ToRecipients: [{
-                                                    EmailAddress: {
-                                                        Address: settings.feedbackMail !== undefined ? settings.feedbackMail : settings.feedbackContact
-                                                    }
-                                                }]
-                                            };
-
-                                            client
-                                                .api('/me/microsoft.graph.sendmail')
-                                                .post({ 'message': email, 'saveToSentItems': true }, (err, res) => {
-                                                    if (err) {
-                                                        $('#feedback-module').append(settings.tpl.submitError);
-                                                        return;
-                                                    }
-                                                    $('#feedback-module').append(settings.tpl.submitSuccess);
-                                                });
+                                                client
+                                                    .api('/me/microsoft.graph.sendmail')
+                                                    .post({ 'message': email, 'saveToSentItems': true }, (err, res) => {
+                                                        if (err) {
+                                                            $('#feedback-module').append(settings.tpl.submitError);
+                                                            return;
+                                                        }
+                                                        $('#feedback-module').append(settings.tpl.submitSuccess);
+                                                    });
+                                            }
                                         });
                                 } else {
                                     $('#feedback-overview-error').show();
