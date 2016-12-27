@@ -564,7 +564,7 @@ angular.module('solvex-feedback').directive('solvexFeedback', [function() {
                                         .api('/me')
                                         .get((err, me) => {
                                             if (err) throw err;
-                                            if (me === undefined) {
+                                            if (me === undefined || me === null) {
                                                 $('#feedback-module').append(settings.tpl.submitErrorGraph);
                                             } else {
                                                 // Build the HTTP request payload (the Message object).
