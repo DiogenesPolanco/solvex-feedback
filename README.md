@@ -49,11 +49,18 @@ grunt build
 #### How to use solvex-feedback
  
 ### Styling
+
 1. ***solvex-feedback.css*** - include all styles that the plugin uses.
 2. ***solvex-feedback.js*** - include all logic that the plugin uses to implement the feedback.
 3. ***solvex-feedback.less*** - include all styles type less that the plugin uses.
 4. ***solvex-feedback.min.css*** - include all styles in minimization that the plugin uses.
 
+
+#### Install "solvex-feedback"
+
+```sh
+bower install https://github.com/diogenespolanco/solvex-feedback.git
+```
 
   ```JavaScript
 (function () {

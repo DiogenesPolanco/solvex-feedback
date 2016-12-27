@@ -23,5 +23,4 @@ Temporary Items
 node_modules
 lib
 solvex-feedback.tpls.js
-bower_components
-dist
+bower_components 
