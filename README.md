@@ -9,6 +9,7 @@
 * [Angular 1.4.8](https://github.com/angular/code.angularjs.org/tree/master/1.4.8) is what HTML would have been, had it been designed for building web-apps. Declarative templates with data-binding, MVW, MVVM, MVC...
 * [JQuery](https://github.com/nippur72/PolymerTS) is a fast, small, and feature-rich JavaScript library.
 * [Microsoft Grahp](https://www.polymer-project.org/) is a back-end tool in the Microsoft Office 365 Suite that facilitates search across integrated applications and applies machine learning to organizational interactions and content use.
+* [Active Directory Authentication Library (ADAL) for JavaScript](https://github.com/AzureAD/azure-activedirectory-library-for-js) helps you to use Azure AD for handling authentication in your single page applications. This library is optimized for working together with AngularJS.
  
 ### Demo
 See latest Solvex-Feedback with Angular 1.x demo [Here!](http://solvex-feedback.azurewebsites.net/).
@@ -48,7 +49,7 @@ grunt build
 ```
 #### How to use solvex-feedback
  
-### Styling
+### Files
 
 1. ***solvex-feedback.css*** - include all styles that the plugin uses.
 2. ***solvex-feedback.js*** - include all logic that the plugin uses to implement the feedback.

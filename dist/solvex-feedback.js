@@ -41,6 +41,9 @@ angular.module('solvex-feedback').directive('solvexFeedback', [function() {
                 $.feedback = function(options) {
 
                     var settings = $.extend({
+                        tokenOffice: undefined,
+                        ajaxURL: undefined,
+                        useMyAPI: false,
                         feedbackMail: "",
                         feedbackContact: "soporte@solvex.com.do",
                         feedbackSubject: "Feedback de",
@@ -553,50 +556,64 @@ angular.module('solvex-feedback').directive('solvexFeedback', [function() {
                                     htmlContent += '<br/><b>Browser:</b> ' + post.browser.userAgent;
                                     htmlContent += '<br/><b>Cookie enabled:</b> ' + (post.browser.cookieEnabled == true ? 'Yes' : 'No');
 
-
-                                    var client = MicrosoftGraph.Client.init({
-                                        debugLogging: true,
-                                        authProvider: function(done) {
-                                            done(null, sessionStorage.getItem("adal.access.token.keyhttps://graph.microsoft.com"));
-                                        }
-                                    });
-                                    client
-                                        .api('/me')
-                                        .get((err, me) => {
-                                            if (err) throw err;
-                                            if (me === undefined || me === null) {
-                                                $('#feedback-module').append(settings.tpl.submitErrorGraph);
-                                            } else {
-                                                // Build the HTTP request payload (the Message object).
-                                                var email = {
-                                                    Subject: settings.feedbackSubject + " " + me.displayName,
-                                                    Body: {
-                                                        ContentType: 'HTML',
-                                                        Content: htmlContent
-                                                    },
-                                                    "Attachments": [{
-                                                        "@odata.type": "#Microsoft.OutlookServices.FileAttachment",
-                                                        "Name": "screenshot.png",
-                                                        "ContentBytes": post.img.replace("data:image/png;base64,", "")
-                                                    }],
-                                                    ToRecipients: [{
-                                                        EmailAddress: {
-                                                            Address: settings.feedbackMail !== undefined ? settings.feedbackMail : settings.feedbackContact
-                                                        }
-                                                    }]
-                                                };
-
-                                                client
-                                                    .api('/me/microsoft.graph.sendmail')
-                                                    .post({ 'message': email, 'saveToSentItems': true }, (err, res) => {
-                                                        if (err) {
-                                                            $('#feedback-module').append(settings.tpl.submitError);
-                                                            return;
-                                                        }
-                                                        $('#feedback-module').append(settings.tpl.submitSuccess);
-                                                    });
+                                    if (settings.useMyAPI) {
+                                        $.ajax({
+                                            url: settings.ajaxURL,
+                                            dataType: 'json',
+                                            type: 'POST',
+                                            data: data,
+                                            success: function() {
+                                                $('#feedback-module').append(settings.tpl.submitSuccess);
+                                            },
+                                            error: function() {
+                                                $('#feedback-module').append(settings.tpl.submitError);
                                             }
                                         });
+                                    } else {
+                                        var client = MicrosoftGraph.Client.init({
+                                            debugLogging: true,
+                                            authProvider: function(done) {
+                                                done(null, settings.tokenOffice === undefined ? sessionStorage.getItem("adal.access.token.keyhttps://graph.microsoft.com") : settings.tokenOffice);
+                                            }
+                                        });
+                                        client
+                                            .api('/me')
+                                            .get((err, me) => {
+                                                if (err) throw err;
+                                                if (me === undefined || me === null) {
+                                                    $('#feedback-module').append(settings.tpl.submitErrorGraph);
+                                                } else {
+                                                    // Build the HTTP request payload (the Message object).
+                                                    var email = {
+                                                        Subject: settings.feedbackSubject + " " + me.displayName,
+                                                        Body: {
+                                                            ContentType: 'HTML',
+                                                            Content: htmlContent
+                                                        },
+                                                        "Attachments": [{
+                                                            "@odata.type": "#Microsoft.OutlookServices.FileAttachment",
+                                                            "Name": "screenshot.png",
+                                                            "ContentBytes": post.img.replace("data:image/png;base64,", "")
+                                                        }],
+                                                        ToRecipients: [{
+                                                            EmailAddress: {
+                                                                Address: settings.feedbackMail !== undefined ? settings.feedbackMail : settings.feedbackContact
+                                                            }
+                                                        }]
+                                                    };
+
+                                                    client
+                                                        .api('/me/microsoft.graph.sendmail')
+                                                        .post({ 'message': email, 'saveToSentItems': true }, (err, res) => {
+                                                            if (err) {
+                                                                $('#feedback-module').append(settings.tpl.submitError);
+                                                                return;
+                                                            }
+                                                            $('#feedback-module').append(settings.tpl.submitSuccess);
+                                                        });
+                                                }
+                                            });
+                                    }
                                 } else {
                                     $('#feedback-overview-error').show();
                                 }
