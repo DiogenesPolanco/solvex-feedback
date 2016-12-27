@@ -59,7 +59,7 @@ grunt build
 (function () {
   angular
     .module('MyApp', [ 
-      'solvexfeedback'
+      'solvex-feedback'
     ]);
 
   ```
