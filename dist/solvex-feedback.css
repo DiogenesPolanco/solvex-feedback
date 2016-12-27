@@ -46,7 +46,7 @@
   font-size: 16px;
   font-weight: normal;
   line-height: 32px;
-  background: url(icons.png) 0px 0px no-repeat;
+  background: url(../src/icons.png) 0px 0px no-repeat;
 }
 
 .feedback-next-btn {
@@ -100,7 +100,7 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
-  background: url(icons.png) 0px -64px;
+  background: url(../src/icons.png) 0px -64px;
 }
 
 .feedback-wizard-close {
@@ -110,7 +110,7 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
-  background: url(icons.png) 0px -34px;
+  background: url(../src/icons.png) 0px -34px;
   opacity: 0.65;
 }
 
@@ -283,7 +283,7 @@
   width: 16px;
   height: 16px;
   margin-top: 7px;
-  background: url(icons.png) 0px -94px;
+  background: url(../src/icons.png) 0px -94px;
 }
 
 .feedback-setblackout div {
@@ -291,7 +291,7 @@
   width: 16px;
   height: 16px;
   margin-top: 7px;
-  background: url(icons.png) -16px -94px;
+  background: url(../src/icons.png) -16px -94px;
 }
 
 .feedback-sethighlight:hover,
@@ -379,7 +379,7 @@
   margin-left: 26px;
   font-size: 14px;
   color: #666;
-  background: url(icons.png) -30px -34px no-repeat;
+  background: url(../src/icons.png) -30px -34px no-repeat;
 }
 
 #feedback-browser-info,

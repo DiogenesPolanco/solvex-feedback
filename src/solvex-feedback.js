@@ -1,18 +1,19 @@
 /**
- * Solvex feedback directive similar to Google Feedback
- * @version v1.0.0 - 2016-12-27 * @link https://github.com/diogenespolanco/solvex-feedback
- * @author Diogenes Polanco <diogenes.polanco@solvex.com.do>
+ * Angular feedback directive similar to Google Feedback
+ * @version v1.0.1 - 2015-02-03 * @link https://github.com/jacobscarter/angular-feedback
+ * @author Jacob Carter <jacob@ieksolutions.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
-angular.module('templates-solvexfeedback', ['solvexfeedback.html']);
+angular.module('templates-angularsendfeedback', ['angularsendfeedback.html']);
 
-angular.module("solvexfeedback.html", []).run(["$templateCache", function($templateCache) {
-    $templateCache.put("solvexfeedback.html", "");
+angular.module("angularsendfeedback.html", []).run(["$templateCache", function($templateCache) {
+    $templateCache.put("angularsendfeedback.html",
+        "");
 }]);
 
-angular.module('solvex-feedback', ['templates-solvexfeedback']);
+angular.module('solvex-feedback', ['templates-angularsendfeedback']);
 
-angular.module('solvex-feedback').directive('angularFeedback', [function() {
+angular.module('solvex-feedback').directive('solvexFeedback', [function() {
 
 
     return {
@@ -22,9 +23,9 @@ angular.module('solvex-feedback').directive('angularFeedback', [function() {
         scope: {
             options: '='
         },
-        templateUrl: function(element, attributes) {
-            return attributes.template || "solvexfeedback.html";
-        },
+        //templateUrl: function(element, attributes) {
+        //return attributes.template || "angularsendfeedback.html";
+        //},
         link: function($scope, $element, $attrs) {
 
             (function($) {
@@ -48,14 +49,14 @@ angular.module('solvex-feedback').directive('angularFeedback', [function() {
                         shadowBlur: 10,
                         lineJoin: 'bevel',
                         lineWidth: 3,
-                        html2canvasURL: 'html2canvas.js',
+                        html2canvasURL: '/bower_components/html2canvas/build/html2canvas.min.js',
                         feedbackButton: '.feedback-btn',
                         showDescriptionModal: true,
                         isDraggable: true,
                         onScreenshotTaken: function() {},
                         tpl: {
                             description: '<div id="feedback-welcome"><img src="http://solvex.com.do/media/1191/logo-solvex-1-1.png" style="width:30%;"><br/><p>Feedback lets you send us suggestions about our products. We welcome problem reports, feature ideas and general comments.</p><p>Start by writing a brief description:</p><textarea id="feedback-note-tmp"></textarea><p>Next we\'ll let you identify areas of the page related to your description.</p><button id="feedback-welcome-next" class="feedback-next-btn feedback-btn-gray">Next</button><div id="feedback-welcome-error">Please enter a description.</div><div class="feedback-wizard-close"></div></div>',
-                            highlighter: '<div id="feedback-highlighter"><img src="/local/moodle_plus/pix/icon.png" style="width: 150px;display: inline-block;float: left; min-width: 90px;padding: 0 8px;margin-right: 16px;font-size: 11px;font-weight: bold;line-height: 28px;color: #444; text-align: center;white-space: nowrap;" />  <p>Click and drag on the page to help us better understand your feedback. You can move this dialog if it\'s in the way.</p><button id="feedback-highlighter-next" class="feedback-next-btn feedback-btn-gray">Next</button><button id="feedback-highlighter-back" class="feedback-back-btn feedback-btn-gray">Back</button><div style="margin-top: 100px;"><button class="feedback-sethighlight feedback-active"><div class="ico"></div><span>Highlight</span></button><label>Highlight areas relevant to your feedback.</label><button class="feedback-setblackout"><div class="ico"></div><span>Black out</span></button><label class="lower">Black out any personal information.</label></div><div class="feedback-buttons"></div><div class="feedback-wizard-close"></div></div>',
+                            highlighter: '<div id="feedback-highlighter"><img src="/bower_components/solvex-feedback/src/logo.jpg" style="width: 150px;display: inline-block;float: left; min-width: 90px;padding: 0 8px;margin-right: 16px;font-size: 11px;font-weight: bold;line-height: 28px;color: #444; text-align: center;white-space: nowrap;" />  <p>Click and drag on the page to help us better understand your feedback. You can move this dialog if it\'s in the way.</p><button id="feedback-highlighter-next" class="feedback-next-btn feedback-btn-gray">Next</button><button id="feedback-highlighter-back" class="feedback-back-btn feedback-btn-gray">Back</button><div style="margin-top: 100px;"><button class="feedback-sethighlight feedback-active"><div class="ico"></div><span>Highlight</span></button><label>Highlight areas relevant to your feedback.</label><button class="feedback-setblackout"><div class="ico"></div><span>Black out</span></button><label class="lower">Black out any personal information.</label></div><div class="feedback-buttons"></div><div class="feedback-wizard-close"></div></div>',
                             overview: '<div id="feedback-overview"><img src="http://solvex.com.do/media/1191/logo-solvex-1-1.png" style="width:30%;"><br/><div id="feedback-overview-description" style="width: 100%;"><div id="feedback-overview-description-text"><h3>Comments</h3></div></div><div id="feedback-overview-screenshot" class="col-md-12"><h3>Screenshot</h3></div><div class="feedback-buttons"><button id="feedback-submit" class="feedback-submit-btn feedback-btn-blue">Submit</button><button id="feedback-overview-back" class="feedback-back-btn feedback-btn-gray">Back</button></div><div id="feedback-overview-error">Please enter a description.</div><div class="feedback-wizard-close"></div></div>',
                             submitSuccess: '<div id="feedback-submit-success"><img src="http://solvex.com.do/media/1191/logo-solvex-1-1.png" style="width:30%;"><br/><p>Thank you for your feedback. We value every piece of feedback we receive.</p><p>We cannot respond individually to every one, but we will use your comments as we strive to improve your experience.</p><button class="feedback-close-btn feedback-btn-blue">OK</button><div class="feedback-wizard-close"></div></div>',
                             submitError: '<div id="feedback-submit-error"><img src="http://solvex.com.do/media/1191/logo-solvex-1-1.png" style="width:30%;"><br/><p>Sadly an error occured while sending your feedback. Please try again.</p><button class="feedback-close-btn feedback-btn-blue">OK</button><div class="feedback-wizard-close"></div></div>'

@@ -63,32 +63,15 @@ bower install https://github.com/diogenespolanco/solvex-feedback.git
 ```
 
   ```JavaScript
-(function() {
-    angular
-        .module('MyApp', [
-            'solvex-feedback'
-        ]);
-})
-  ```
+var app = angular.module("MyApp", ['solvex-feedback']);
 
-
-  ```JavaScript
-(function () {
-  angular
-    .module('MyApp')
-    .controller('MainController', MainController);
-
-  /**
-   * The MainController code.
-   */
-  function MainController () {
-    var vm = this;
-    vm.options = {
+app.controller("MainController", function($scope) {
+    var self = this;
+    self.options = {
         feedbackMail: "diogenes.polanco@solvex.com.do",
         feedbackSubject: "Este es un nuevo subject para los feedback"
     };
-  }
-})
+});
   ```
 
   ```HTML
@@ -97,19 +80,18 @@ bower install https://github.com/diogenespolanco/solvex-feedback.git
     <head>
         <title>My App</title>
         <link href="/bower_components/solvex-feedback/dist/solvex-feedback.css" rel="stylesheet" type="text/css" >
-    </head>
-    <body> 
-        <div ng-app="MyApp">
-            <div ng-controller="MainController as main">   
-                    <solvex-feedback options="main.options"></solvex-feedback> 
-            </div> 
-        </div>  
         <script src="/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
         <script src="/bower_components/angular/angular.min.js" type="text/javascript"></script>
         <script src="/bower_components/msgraph-sdk-javascript/lib/graph-js-sdk-web.js" type="text/javascript"></script>
         <script src="/bower_components/solvex-feedback/dist/solvex-feedback.js" type="text/javascript"></script> 
-        <script src="/app.js" type="text/javascript"></script>
-        <script src="controllers/mainController.js" type="text/javascript"></script>
+         <script src="controllers/mainController.js" type="text/javascript"></script>
+    </head>
+    <body>  
+        <div ng-app="MyApp">
+            <div ng-controller="MainController as main">
+                <solvex-feedback options="main.options"></solvex-feedback>
+            </div>
+        </div>
     </body>
 </html>
   ``` 
