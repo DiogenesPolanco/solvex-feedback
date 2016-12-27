@@ -1,0 +1,21 @@
+{
+    "name": "solvex-feedback",
+    "version": "1.0.0",
+    "main": "./dist/solvex-feedback.min.js",
+    "description": "Solvex feedback directive similar to Google Feedback",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/diogenespolanco/solvex-feedback.git"
+    },
+    "dependencies": {
+        "angular": "1.4.8",
+        "jquery": "*",
+        "html2canvas": "*",
+        "msgraph-sdk-javascript": "https://github.com/microsoftgraph/msgraph-sdk-javascript.git"
+    },
+    "ignore": [
+        "node_modules",
+        "components",
+        "lib"
+    ]
+}
