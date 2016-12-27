@@ -63,12 +63,12 @@ bower install https://github.com/diogenespolanco/solvex-feedback.git
 ```
 
   ```JavaScript
-(function () {
-  angular
-    .module('MyApp', [ 
-      'solvex-feedback'
-    ]);
-
+(function() {
+    angular
+        .module('MyApp', [
+            'solvex-feedback'
+        ]);
+})
   ```
 
 

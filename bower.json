@@ -9,6 +9,7 @@
     },
     "dependencies": {
         "angular": "1.4.8",
+        "angular-route": "1.4.8",
         "jquery": "*",
         "html2canvas": "*",
         "msgraph-sdk-javascript": "https://github.com/microsoftgraph/msgraph-sdk-javascript.git"
