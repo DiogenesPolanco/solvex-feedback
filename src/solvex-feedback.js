@@ -36,7 +36,7 @@ angular.module('solvex-feedback').directive('solvexFeedback', [function() {
                         tokenOffice: undefined,
                         ajaxURL: undefined,
                         useMyAPI: false,
-                        feedbackMail: "",
+                        feedbackMail: undefined,
                         feedbackContact: "soporte@solvex.com.do",
                         feedbackSubject: "Feedback de",
                         postBrowserInfo: true,
