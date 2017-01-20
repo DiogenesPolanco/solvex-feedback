@@ -60,7 +60,7 @@ grunt build
 #### Install "solvex-feedback"
 
 ```sh
-bower install https://github.com/diogenespolanco/solvex-feedback.git
+bower install solvex-feedback
 ```
 
   ```JavaScript
