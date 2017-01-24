@@ -63,7 +63,7 @@ grunt build
 ```sh
 bower install solvex-feedback
 ```
-//[Visual Studio Sevices Auth Library (VSSAL) for JavaScript](https://github.com/DiogenesPolanco/Visual-Studio-Sevices-Auth-Library-Js) 
+#### You can use: [Visual Studio Sevices Auth Library (VSSAL) for JavaScript](https://github.com/DiogenesPolanco/Visual-Studio-Sevices-Auth-Library-Js) 
   ```JavaScript
 var app = angular.module("MyApp", ['solvex-feedback']);
 
@@ -90,9 +90,10 @@ app.controller("MainController", function($scope) {
         <link href="/bower_components/solvex-feedback/dist/solvex-feedback.css" rel="stylesheet" type="text/css" >
         <script src="/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
         <script src="/bower_components/angular/angular.min.js" type="text/javascript"></script>
+        <script src="/bower_components/vssal-angular/dist/vssal-angular.js"></script>
         <script src="/bower_components/msgraph-sdk-javascript/lib/graph-js-sdk-web.js" type="text/javascript"></script>
         <script src="/bower_components/solvex-feedback/dist/solvex-feedback.js" type="text/javascript"></script> 
-         <script src="controllers/mainController.js" type="text/javascript"></script>
+        <script src="controllers/mainController.js" type="text/javascript"></script>
     </head>
     <body>  
         <div ng-app="MyApp">
