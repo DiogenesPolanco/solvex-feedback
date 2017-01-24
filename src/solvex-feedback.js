@@ -1,7 +1,7 @@
 /**
- * Angular feedback directive similar to Google Feedback
- * @version v1.0.1 - 2015-02-03 * @link https://github.com/jacobscarter/angular-feedback
- * @author Jacob Carter <jacob@ieksolutions.com>
+ * solvex feedback directive similar to Google Feedback
+ * @version v1.0.0 - 2016-12-27 * @link https://github.com/diogenespolanco/solvex-feedback
+ * @author Diogenes Polanco <diogenes.polanco@solvex.com.do>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
 angular.module('templates-angularsendfeedback', ['angularsendfeedback.html']);
@@ -36,6 +36,8 @@ angular.module('solvex-feedback').directive('solvexFeedback', [function() {
                         tokenOffice: undefined,
                         ajaxURL: undefined,
                         useMyAPI: false,
+                        useVSSAL: false,
+                        callback: undefined,
                         feedbackMail: undefined,
                         feedbackContact: "soporte@solvex.com.do",
                         feedbackSubject: "Feedback de",
@@ -561,6 +563,9 @@ angular.module('solvex-feedback').directive('solvexFeedback', [function() {
                                                 $('#feedback-module').append(settings.tpl.submitError);
                                             }
                                         });
+                                    }
+                                    if (settings.useVSSAL && typeof settings.callback === 'function') {
+                                        settings.callback(post);
                                     } else {
                                         var client = MicrosoftGraph.Client.init({
                                             debugLogging: true,
