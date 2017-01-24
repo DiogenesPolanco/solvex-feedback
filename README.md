@@ -10,7 +10,7 @@
 * [JQuery](https://github.com/nippur72/PolymerTS) is a fast, small, and feature-rich JavaScript library.
 * [Microsoft Grahp](https://www.polymer-project.org/) is a back-end tool in the Microsoft Office 365 Suite that facilitates search across integrated applications and applies machine learning to organizational interactions and content use.
 * [Active Directory Authentication Library (ADAL) for JavaScript](https://github.com/AzureAD/azure-activedirectory-library-for-js) helps you to use Azure AD for handling authentication in your single page applications. This library is optimized for working together with AngularJS.
-* [Visual Studio Sevices Auth Library (VSSAL) for JavaScript](https://github.com/DiogenesPolanco/Visual-Studio-Sevices-Auth-Library-Js) It is an angular module for: Using the RESTful API library, authenticate with visual studio online and create service hooks to be notified of important events, Add new workitems, bugs, build tasks, dashboard widgets, and more from Visual Studio Team 
+* [Visual Studio Sevices Auth Library (VSSAL) for JavaScript](https://github.com/DiogenesPolanco/Visual-Studio-Sevices-Auth-Library-Js) It is an angular module for: Using the RESTful API library, authenticate with visual studio online and create service hooks to be notified of important events, Add new workitems, bugs, build tasks, dashboard widgets, and more from Visual Studio Team.
  
 ### Demo
 See latest Solvex-Feedback with Angular 1.x demo [Here!](http://solvex-feedback.azurewebsites.net/).
