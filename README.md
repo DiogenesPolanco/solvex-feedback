@@ -63,13 +63,19 @@ grunt build
 ```sh
 bower install solvex-feedback
 ```
-
+//[Visual Studio Sevices Auth Library (VSSAL) for JavaScript](https://github.com/DiogenesPolanco/Visual-Studio-Sevices-Auth-Library-Js) 
   ```JavaScript
 var app = angular.module("MyApp", ['solvex-feedback']);
 
 app.controller("MainController", function($scope) {
     var self = this;
     self.options = {
+        useVSSAL: false,
+        LoginVSSAL: function() {
+            //vssalAuthenticationService.login();
+        },
+            callback: function(feedback, feedbackSuccess, feedbackError) {
+        },
         feedbackMail: "diogenes.polanco@solvex.com.do",
         feedbackSubject: "Este es un nuevo subject para los feedback"
     };
