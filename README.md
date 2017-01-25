@@ -75,7 +75,7 @@ app.controller("MainController", function($scope) { // vssalAuthenticationServic
             //vssalAuthenticationService.login();
         },
         callback: function(feedback, feedbackSuccess, feedbackError) {
-            console(feedback);
+            console.log(feedback);
             feedbackSuccess();
         },
         feedbackMail: "diogenes.polanco@solvex.com.do",
