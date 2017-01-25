@@ -1,7 +1,7 @@
 {
     "name": "solvex-feedback",
     "version": "1.0.2",
-    "main": "./dist/solvex-feedback.min.js",
+    "main": ["./dist/solvex-feedback.js","./dist/solvex-feedback.css"],
     "description": "Solvex feedback directive similar to Google Feedback",
     "repository": {
         "type": "git",
