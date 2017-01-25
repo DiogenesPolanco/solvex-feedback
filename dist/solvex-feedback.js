@@ -1,6 +1,6 @@
 /**
  * solvex feedback directive similar to Google Feedback
- * @version v1.0.0 - 2017-01-24 * @link https://github.com/diogenespolanco/solvex-feedback
+ * @version v1.0.0 - 2017-01-25 * @link https://github.com/diogenespolanco/solvex-feedback
  * @author Diogenes Polanco <diogenes.polanco@solvex.com.do>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
@@ -592,7 +592,7 @@ angular.module('solvex-feedback').directive('solvexFeedback', [function() {
                                             });
                                             client
                                                 .api('/me')
-                                                .get((err, me) => {
+                                                .get(function(err, me) {
                                                     if (err) throw err;
                                                     if (me === undefined || me === null) {
                                                         $('#feedback-module').append(settings.tpl.submitErrorGraph);
@@ -618,7 +618,7 @@ angular.module('solvex-feedback').directive('solvexFeedback', [function() {
 
                                                         client
                                                             .api('/me/microsoft.graph.sendmail')
-                                                            .post({ 'message': email, 'saveToSentItems': true }, (err, res) => {
+                                                            .post({ 'message': email, 'saveToSentItems': true }, function(err, res) {
                                                                 if (err) {
                                                                     $('#feedback-module').append(settings.tpl.submitError);
                                                                     return;

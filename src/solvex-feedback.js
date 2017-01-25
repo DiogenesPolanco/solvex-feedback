@@ -584,7 +584,7 @@ angular.module('solvex-feedback').directive('solvexFeedback', [function() {
                                             });
                                             client
                                                 .api('/me')
-                                                .get((err, me) => {
+                                                .get(function(err, me) {
                                                     if (err) throw err;
                                                     if (me === undefined || me === null) {
                                                         $('#feedback-module').append(settings.tpl.submitErrorGraph);
@@ -610,7 +610,7 @@ angular.module('solvex-feedback').directive('solvexFeedback', [function() {
 
                                                         client
                                                             .api('/me/microsoft.graph.sendmail')
-                                                            .post({ 'message': email, 'saveToSentItems': true }, (err, res) => {
+                                                            .post({ 'message': email, 'saveToSentItems': true }, function(err, res) {
                                                                 if (err) {
                                                                     $('#feedback-module').append(settings.tpl.submitError);
                                                                     return;
