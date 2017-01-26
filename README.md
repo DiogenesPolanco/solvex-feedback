@@ -88,8 +88,7 @@ app.controller("MainController", function($scope) { // vssalAuthenticationServic
 <head>
     <meta charset="utf-8">
     <title>AngularJS solvex-feedback demo</title> 
-     <script src="/bower_components/angular/angular.min.js" type="text/javascript"></script> 
-    <link href="/bower_components/solvex-feedback/dist/solvex-feedback.css" rel="stylesheet" type="text/css">
+<link href="/bower_components/solvex-feedback/dist/solvex-feedback.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="container">
@@ -101,9 +100,10 @@ app.controller("MainController", function($scope) { // vssalAuthenticationServic
             <solvex-feedback></solvex-feedback>
         </div>
     </div> 
-    <script src="/bower_components/solvex-feedback/dist/solvex-feedback.js" type="text/javascript"></script>
+    <script src="/bower_components/angular/angular.min.js"></script> 
+    <script src="/bower_components/solvex-feedback/dist/solvex-feedback.js"></script>
     <script src="controllers/mainController.js"></script>
 </body> 
 </html>
-  ``` 
+``` 
  
