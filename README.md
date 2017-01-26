@@ -64,7 +64,7 @@ bower install solvex-feedback
 ```
 #### You can use: [Visual Studio Sevices Auth Library (VSSAL) for JavaScript](https://github.com/DiogenesPolanco/Visual-Studio-Sevices-Auth-Library-Js) 
   ```JavaScript
-var app = angular.module("MyApp", ['solvex-feedback']); //You can add: 'vssalAngular','ngRoute'
+var app = angular.module("demo", ['solvex-feedback']); //You can add: 'vssalAngular','ngRoute'
 
 app.controller("MainController", function($scope) { // vssalAuthenticationService, vssalVisualStudioService 
     $scope.sxConfig = {
@@ -83,24 +83,27 @@ app.controller("MainController", function($scope) { // vssalAuthenticationServic
   ```
 
   ```HTML
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>My App</title>
-        <link href="/bower_components/solvex-feedback/dist/solvex-feedback.css" rel="stylesheet" type="text/css" > 
-        <script src="/bower_components/angular/angular.min.js" type="text/javascript"></script>
-        <script src="/bower_components/vssal-angular/dist/vssal-angular.js"></script>
-        <script src="/bower_components/msgraph-sdk-javascript/lib/graph-js-sdk-web.js" type="text/javascript"></script>
-        <script src="/bower_components/solvex-feedback/dist/solvex-feedback.js" type="text/javascript"></script> 
-        <script src="controllers/mainController.js" type="text/javascript"></script>
-    </head>
-    <body>  
-        <div ng-app="MyApp">
-            <div ng-controller="MainController as main">
-                <solvex-feedback></solvex-feedback>
-            </div>
+<!doctype html>
+<html ng-app="demo">
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS solvex-feedback demo</title> 
+     <script src="/bower_components/angular/angular.min.js" type="text/javascript"></script> 
+    <link href="/bower_components/solvex-feedback/dist/solvex-feedback.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-muted">Demo solvex-feedback</h1> 
+        <div class="usage row" ng-controller="MainController">
+            <h4>Simple usage</h4>
+            <p>This is a simple usage of the solvex-feedback</p>
+            <pre>&lt;solvex-feedback&gt;&lt;/solvex-feedback&gt;</pre>
+            <solvex-feedback></solvex-feedback>
         </div>
-    </body>
+    </div> 
+    <script src="/bower_components/solvex-feedback/dist/solvex-feedback.js" type="text/javascript"></script>
+    <script src="controllers/mainController.js"></script>
+</body> 
 </html>
   ``` 
  
