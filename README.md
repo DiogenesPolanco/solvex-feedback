@@ -66,7 +66,7 @@ bower install solvex-feedback
   ```JavaScript
 var app = angular.module("demo", ['solvex-feedback']); //You can add: 'vssalAngular','ngRoute'
 
-app.controller("MainController", function($scope) { // vssalAuthenticationService, vssalVisualStudioService 
+app.controller("MainController", function($scope){//vssalAuthenticationService,vssalVisualStudioService 
     $scope.sxConfig = {
         useVSSAL: false,
         LoginVSSAL: function() {
