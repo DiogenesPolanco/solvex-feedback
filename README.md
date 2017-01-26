@@ -72,9 +72,9 @@ app.controller("MainController", function($scope) { // vssalAuthenticationServic
         LoginVSSAL: function() {
             //vssalAuthenticationService.login();
         },
-        callback: function(feedback, feedbackSuccess, feedbackError) {
+        callback: function(feedback) {
             console.log(feedback);
-            feedbackSuccess();
+            return true;
         },
         feedbackMail: "diogenes.polanco@solvex.com.do",
         feedbackSubject: "Este es un nuevo subject para los feedback"
