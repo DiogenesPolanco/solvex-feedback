@@ -1,7 +1,7 @@
 /*!
  * solvex-feedback
  * 
- * Version: 1.0.8 - 2017-01-26T23:22:22.048Z
+ * Version: 1.0.8 - 2017-01-26T23:25:32.702Z
  * License: MIT
  */
 
@@ -411,8 +411,8 @@ input[type="submit"].feedback-btn.small {
 }
 .feedback-animate-toside {
   top: 90%;
-  left: 90%;
-  width: 500px;
+  left: 85%;
+  width: 560px;
   margin-left: -320px;
   margin-top: -200px;
 }
