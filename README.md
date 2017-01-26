@@ -64,7 +64,7 @@ bower install solvex-feedback
 ```
 #### You can use: [Visual Studio Sevices Auth Library (VSSAL) for JavaScript](https://github.com/DiogenesPolanco/Visual-Studio-Sevices-Auth-Library-Js) 
   ```JavaScript
-var app = angular.module("demo", ['solvex-feedback']); //You can add: 'vssalAngular','ngRoute'
+var app = angular.module("demo", ['solvex.feedback']); //You can add: 'vssalAngular','ngRoute'
 
 app.controller("MainController", function($scope){//vssalAuthenticationService,vssalVisualStudioService 
     $scope.sxConfig = {
