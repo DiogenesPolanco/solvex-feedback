@@ -1,0 +1,29 @@
+{
+    "name": "solvex-feedback",
+    "version": "1.0.8",
+    "authors": [
+        "Diogenes Polanco <diogenespolancomartinez@gmail.com>"
+    ],
+    "description": "This is a directive type plugin for angular which allows giving feedback on the frontend of the applications that develops solvex.",
+    "main": "dist/solvex-feedback.js, dist/solvex-feedback.js",
+    "license": "MIT",
+    "private": false,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "html2canvas": "*",
+        "msgraph-sdk-javascript": "https://github.com/microsoftgraph/msgraph-sdk-javascript.git",
+        "vssal-angular": "*"
+    },
+    "devDependencies": {
+        "jquery": "~2.1.1",
+        "angular": "~1.2.26",
+        "angular-sanitize": "~1.2.26",
+        "angular-mocks": "~1.2.26"
+    }
+}

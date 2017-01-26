@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="demo">
+
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS solvex-feedback demo</title>
+
+    <!-- TODO: Include Angular from Bower components -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-sanitize.js"></script>
+
+    <link rel="stylesheet" href="../dist/solvex-feedback.css">
+    <link rel="stylesheet" href="demo.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-muted">Demo solvex-feedback</h1>
+
+        <div class="usage row" ng-controller="MainController">
+            <h4>Simple usage</h4>
+            <p>This is a simple usage of the solvex-feedback</p>
+            <pre>&lt;solvex-feedback&gt;&lt;/solvex-feedback&gt;</pre>
+            <solvex-feedback></solvex-feedback>
+        </div>
+    </div>
+
+    <script src="../dist/solvex-feedback.js"></script>
+    <script src="demo.js"></script>
+</body>
+
+</html>
