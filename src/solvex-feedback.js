@@ -110,9 +110,22 @@ var MicrosoftGraph = {};
 
                 // open send feedback modal window
                 open: function() {
-                    if (options.useVSSAL && !sessionStorage.getItem("vssal.access.token.key") && typeof options.LoginVSSAL === "function") {
+                    if (options.useVSSAL &&
+                        (
+                            sessionStorage.getItem("vssal.access.token.key") === "" ||
+                            sessionStorage.getItem("vssal.access.token.key") === null ||
+                            sessionStorage.getItem("vssal.access.token.key") === undefined
+                        ) &&
+                        typeof options.LoginVSSAL === "function") {
                         options.LoginVSSAL();
-                    } else if (options.useGraph && (!sessionStorage.getItem("adal.access.token.keyhttps://graph.microsoft.com") || !options.tokenOffice)) {
+                    } else if (options.useGraph &&
+                        (
+                            sessionStorage.getItem("adal.access.token.keyhttps://graph.microsoft.com") === "" ||
+                            sessionStorage.getItem("adal.access.token.keyhttps://graph.microsoft.com") === null ||
+                            sessionStorage.getItem("adal.access.token.keyhttps://graph.microsoft.com") === undefined ||
+                            options.tokenOffice === undefined
+                        )
+                    ) {
                         options.LoginGraph();
                     } else {
                         var len = options.pages.length;
