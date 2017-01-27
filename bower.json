@@ -5,7 +5,7 @@
         "Diogenes Polanco <diogenespolancomartinez@gmail.com>"
     ],
     "description": "This is a directive type plugin for angular which allows giving feedback on the frontend of the applications that develops solvex.",
-    "main": "dist/solvex-feedback.js, dist/solvex-feedback.css",
+    "main": ["dist/solvex-feedback.js", "dist/solvex-feedback.css"],
     "license": "MIT",
     "private": false,
     "ignore": [
