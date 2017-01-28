@@ -1,7 +1,7 @@
 /*!
  * solvex-feedback
  * 
- * Version: 1.0.8 - 2017-01-27T15:47:40.128Z
+ * Version: 1.0.8 - 2017-01-28T13:38:42.545Z
  * License: MIT
  */
 
@@ -306,6 +306,7 @@ var MicrosoftGraph = {};
         options = options || {};
 
         button = element("button", options.label);
+        button.id = "btnfeedback";
         button.className = "feedback-btn feedback-bottom-right";
 
         button.setAttribute(H2C_IGNORE, true);
@@ -313,6 +314,10 @@ var MicrosoftGraph = {};
         button.onclick = returnMethods.open;
 
         if (options.appendTo !== null) {
+            var x = document.getElementById(button.id);
+            if (x) {
+                button = x;
+            }
             ((options.appendTo !== undefined) ? options.appendTo : document.body).appendChild(button);
         }
 

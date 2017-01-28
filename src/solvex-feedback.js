@@ -298,6 +298,7 @@ var MicrosoftGraph = {};
         options = options || {};
 
         button = element("button", options.label);
+        button.id = "btnfeedback";
         button.className = "feedback-btn feedback-bottom-right";
 
         button.setAttribute(H2C_IGNORE, true);
@@ -305,6 +306,10 @@ var MicrosoftGraph = {};
         button.onclick = returnMethods.open;
 
         if (options.appendTo !== null) {
+            var x = document.getElementById(button.id);
+            if (x) {
+                button = x;
+            }
             ((options.appendTo !== undefined) ? options.appendTo : document.body).appendChild(button);
         }
 
